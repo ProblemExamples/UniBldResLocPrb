@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<properties>
+		<!--
+			NOTE This would be overwritten by the child module,
+			so it has no effect in this particular example project,
+			as we do not use this variable in this POM during the build.
+		-->
+		<!--<root.basedir>${project.basedir}</root.basedir>-->
+	</properties>
+
+	<groupId>mygroup</groupId>
+	<artifactId>myproj-parent</artifactId>
+	<version>0.1-SNAPSHOT</version>
+
+	<packaging>pom</packaging>
+
+	<name>MyProj_Parent</name>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>2.15</version>
+					<configuration>
+						<configLocation>src/main/resources/checkstyle.xml</configLocation>
+						<propertyExpansion>java.header.regex.template.file=${root.basedir}/src/main/resources/javaHeaderRegexTemplate.txt</propertyExpansion>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
+

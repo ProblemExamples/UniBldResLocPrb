@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<properties>
+		<!--
+			NOTE This is alwasy in effect, but it is only valid if maven is executed
+			on this POM directly.
+		-->
+		<root.basedir>${project.parent.relativePath}</root.basedir>
+	</properties>
+
+	<parent>
+		<groupId>mygroup</groupId>
+		<artifactId>myproj-parent</artifactId>
+		<version>0.1-SNAPSHOT</version>
+		<relativePath>../parent</relativePath>
+	</parent>
+
+	<groupId>mygroup</groupId>
+	<artifactId>myproj-child</artifactId>
+	<version>0.1-SNAPSHOT</version>
+
+	<packaging>jar</packaging>
+
+	<name>MyProj_Child</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<!-- Execute during the maven "verify" phase (`mvn verify`) -->
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+
